@@ -17,7 +17,7 @@ ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
 # Ensure the node user has the correct UID/GID
-RUN if [ "$USER_UID" != "1000" ]; then \
+RUN if [ "$(id -u node 2>/dev/null || echo 0)" != "$USER_UID" ] && [ "$USER_UID" != "1000" ]; then \
         groupmod --gid $USER_GID node && \
         usermod --uid $USER_UID --gid $USER_GID node; \
     fi
