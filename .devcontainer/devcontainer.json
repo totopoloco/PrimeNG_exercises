@@ -17,7 +17,8 @@
         "christian-kohler.path-intellisense",
         "editorconfig.editorconfig",
         "formulahendry.auto-rename-tag",
-        "nrwl.angular-console"
+        "nrwl.angular-console",
+        "gydunhn.angular-primeng-essentials"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
