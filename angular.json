@@ -26,16 +26,29 @@
             }
           },
           "options": {
-            "assets": [],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "node_modules/primeicons",
+                "output": "/assets/vendor/primeicons"
+              },
+              {
+                "glob": "primeng.css",
+                "input": "node_modules/primeng/resources",
+                "output": "/assets/vendor/primeng"
+              },
+              {
+                "glob": "theme.css",
+                "input": "node_modules/@primeuix/themes/aura-light-blue",
+                "output": "/assets/vendor/primeui-theme/aura-light-blue"
+              }
+            ],
             "index": "src/index.html",
             "browser": "src/main.ts",
             "outputPath": "dist/demo",
             "polyfills": ["zone.js"],
             "scripts": [],
-            "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "src/global_styles.css"
-            ],
+            "styles": ["src/global_styles.css"],
             "tsConfig": "tsconfig.app.json"
           }
         },

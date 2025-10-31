@@ -1,6 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ThemeService } from "../../core/services/theme.service";
+import { LoadingService } from "../../core/services/loading.service";
 import type { ThemeMode } from "../../core/models/theme.model";
 
 @Component({
@@ -183,11 +184,21 @@ import type { ThemeMode } from "../../core/models/theme.model";
 })
 export class SettingsComponent {
   themeService = inject(ThemeService);
+  loading = inject(LoadingService);
 
   selectedTheme: ThemeMode = this.themeService.currentTheme().mode;
 
   setTheme(theme: ThemeMode): void {
     this.selectedTheme = theme;
     this.themeService.setTheme(theme);
+    // Show a brief progress overlay to indicate the theme update is being applied.
+    // This also demonstrates how to use the LoadingService for future async work.
+    this.loading.wrapPromise(
+      new Promise<void>((resolve) => {
+        // Small delay so the overlay is perceptible without being annoying.
+        globalThis.setTimeout(resolve, 220);
+      }),
+      "theme-change"
+    );
   }
 }

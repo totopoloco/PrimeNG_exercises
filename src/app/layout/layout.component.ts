@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { TopbarComponent } from './topbar/topbar.component';
+import { Component } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterOutlet } from "@angular/router";
+import { SidebarComponent } from "./sidebar/sidebar.component";
+import { TopbarComponent } from "./topbar/topbar.component";
+import { LoadingOverlayComponent } from "../shared/loading/loading-overlay.component";
 
 @Component({
-  selector: 'app-layout',
+  selector: "app-layout",
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SidebarComponent, TopbarComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    SidebarComponent,
+    TopbarComponent,
+    LoadingOverlayComponent,
+  ],
   template: `
     <div class="layout-wrapper">
       <app-sidebar />
@@ -19,27 +26,32 @@ import { TopbarComponent } from './topbar/topbar.component';
           <router-outlet />
         </main>
       </div>
+
+      <!-- Global loading overlay -->
+      <app-loading-overlay />
     </div>
   `,
-  styles: [`
-    .layout-wrapper {
-      display: flex;
-      min-height: 100vh;
-      background-color: var(--surface-ground);
-    }
+  styles: [
+    `
+      .layout-wrapper {
+        display: flex;
+        min-height: 100vh;
+        background-color: var(--surface-ground);
+      }
 
-    .layout-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+      .layout-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
 
-    .content {
-      flex: 1;
-      overflow-y: auto;
-      background-color: var(--surface-ground);
-    }
-  `]
+      .content {
+        flex: 1;
+        overflow-y: auto;
+        background-color: var(--surface-ground);
+      }
+    `,
+  ],
 })
 export class LayoutComponent {}
