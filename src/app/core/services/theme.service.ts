@@ -6,9 +6,9 @@ import type { ThemeMode, ThemeState } from '../models/theme.model';
 })
 export class ThemeService {
   private readonly STORAGE_KEY = 'app-theme-mode';
-  private mediaQuery: MediaQueryList;
+  private readonly mediaQuery: MediaQueryList;
 
-  private themeState = signal<ThemeState>({
+  private readonly themeState = signal<ThemeState>({
     mode: this.getStoredTheme(),
     effectiveTheme: 'light'
   });
@@ -16,7 +16,7 @@ export class ThemeService {
   readonly currentTheme = this.themeState.asReadonly();
 
   constructor() {
-    this.mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    this.mediaQuery = globalThis.matchMedia('(prefers-color-scheme: dark)');
     this.updateEffectiveTheme();
     this.setupMediaQueryListener();
 
