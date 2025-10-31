@@ -1,11 +1,11 @@
 {
   "name": "PrimeNG Angular Development",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      "NODE_VERSION": "20"
-    }
-  },
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "primeng_exercises_workarea",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "/usr/local/bin/entrypoint.sh",
+  "remoteUser": "node",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -24,7 +24,7 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": true
+          "source.fixAll.eslint": "explicit"
         },
         "[typescript]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -39,11 +39,8 @@
     }
   },
   "forwardPorts": [4200],
-  "postCreateCommand": "npm install -g @angular/cli && echo 'Development container ready!'",
-  "remoteUser": "node",
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest"
-    }
-  }
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    "source=primeng_exercises_workarea-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ]
 }

@@ -1,0 +1,121 @@
+:root {
+  --primary-color: #3b82f6;
+  --primary-color-text: #ffffff;
+  --surface-ground: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-border: #e2e8f0;
+  --surface-hover: #f1f5f9;
+  --text-color: #1e293b;
+  --text-color-secondary: #64748b;
+}
+
+.app-dark {
+  --primary-color: #3b82f6;
+  --primary-color-text: #ffffff;
+  --surface-ground: #0f172a;
+  --surface-card: #1e293b;
+  --surface-border: #334155;
+  --surface-hover: #475569;
+  --text-color: #f1f5f9;
+  --text-color-secondary: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--surface-ground);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.p-button {
+  background: transparent;
+  border: 1px solid var(--surface-border);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.p-button:hover {
+  background: var(--surface-hover);
+}
+
+.p-button.p-button-rounded {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.p-selectbutton {
+  display: inline-flex;
+  gap: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.p-selectbutton .p-button {
+  border-radius: 0;
+  border-right: none;
+}
+
+.p-selectbutton .p-button:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.p-selectbutton .p-button:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-right: 1px solid var(--surface-border);
+}
+
+.p-selectbutton .p-button.p-highlight {
+  background: var(--primary-color);
+  color: var(--primary-color-text);
+  border-color: var(--primary-color);
+}

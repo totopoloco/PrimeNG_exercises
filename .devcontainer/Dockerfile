@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     vim \
     sudo \
+    dos2unix \
+    htop \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user
@@ -34,3 +36,8 @@ USER node
 
 # Expose Angular development server port
 EXPOSE 4200
+
+# Continue setting up software in the entry point script.
+COPY .devcontainer/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN sudo dos2unix /usr/local/bin/entrypoint.sh
+RUN sudo chmod a+x /usr/local/bin/entrypoint.sh

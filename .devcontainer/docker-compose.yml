@@ -1,0 +1,16 @@
+services:
+  primeng_exercises_workarea:
+    container_name: primeng_exercises_workarea
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - primeng_exercises_workarea-node_modules:/workspace/node_modules
+    cap_add:
+      - CAP_IPC_LOCK
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    ports:
+      - '4200:4200'
+volumes:
+  primeng_exercises_workarea-node_modules:
