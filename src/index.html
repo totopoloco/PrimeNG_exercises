@@ -4,10 +4,35 @@
     <title>My app</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <base href="/" />
+    <!-- Prevent theme flash: set effective theme class before styles render -->
+    <script>
+      (function () {
+        var KEY = "app-theme-mode";
+        var stored = localStorage.getItem(KEY);
+        var prefersDark = !!(
+          globalThis.matchMedia &&
+          globalThis.matchMedia("(prefers-color-scheme: dark)").matches
+        );
+        var effective;
+        if (stored === "dark") {
+          effective = "dark";
+        } else if (stored === "light") {
+          effective = "light";
+        } else {
+          effective = prefersDark ? "dark" : "light";
+        }
+        if (effective === "dark") {
+          document.documentElement.classList.add("app-dark");
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <app-root>Loading...</app-root>

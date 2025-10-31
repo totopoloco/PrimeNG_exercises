@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <div class="home-container">
-      <p>Your content goes here...</p>
+      <p>Hello World!</p>
     </div>
   `,
   styles: [`
